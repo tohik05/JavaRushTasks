@@ -12,6 +12,7 @@ public class Cache<K, V> {
     public V getByKey(K key, Class<V> clazz) throws Exception {
         Constructor<V> constructor = clazz.getConstructor(key.getClass());
         V value = constructor.newInstance(key);
+        System.out.println(constructor);
         if (!cache.containsKey(key)) {
             cache.put(key, value);
         }
